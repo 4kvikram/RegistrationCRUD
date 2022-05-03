@@ -1,0 +1,56 @@
+﻿@model List<RegistrationViewModel>
+
+<div>
+    <table id="Regtable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                 <tr>
+                <td>@item.Fname</td>
+                <td>@item.Lname</td>
+                <td>@item.Dob.ToShortDateString()</td>
+                <td>
+                        @if (item.Gender==1)
+                        {
+                            <span>Male</span>
+                        }
+                        else
+                        {
+                              <span>Female</span>
+                        }
+                    </td>
+                <td>@item.Address</td>
+            </tr>
+            }
+           
+           
+        </tbody>
+        <tfoot>
+            <tr>
+               <th>First Name</th>
+                <th>Last Name</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th>Address</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+<a asp-action="Index" asp-controller="Registration"> Add Registration</a>
+<script>
+$(document).ready(function() {
+    $('#Regtable').DataTable();
+} );
+
+</script>
